@@ -6,7 +6,9 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -20,10 +22,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @NotNull
+    @Size(min = 2)
     private String firstName;
     @NotNull
+    @Size(min = 2)
     private String lastName;
-
+    @NotNull
+    @Size(min = 10)
+    private String password;
+    @NotNull
     private LocalDate dateOfBirth;
     private String drivingLicenseNumber;
     @NotNull
@@ -32,7 +39,7 @@ public class User {
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_name"))
-    private Set<pl.pawel.entity.Role> roles = new HashSet<>();
+    private Set<Role> roles = new HashSet<>();
 
     @Override
     public String toString() {
