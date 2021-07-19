@@ -1,22 +1,55 @@
 package pl.pawelkozlowski.entities;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 @ToString
 public class Rental {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
+
+    @Column(name = "start_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm.s")
+    private LocalDateTime startDate;
+
+    @Column(name = "finish_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm.s")
+    private LocalDateTime finishDate;
+
+    @Column(name = "actual_przebieg")
+    private int przebiegStart;
+
+    @Column(name = "price")
+    private float price;
+
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+                fetch = FetchType.LAZY)
+    @JoinColumn(name = "car_id")
+    private Car car;
+
+
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+            fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+
+
+
+
 
 
 
