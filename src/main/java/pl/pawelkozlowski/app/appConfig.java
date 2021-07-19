@@ -43,14 +43,14 @@ public class appConfig {
         return new LocalValidatorFactoryBean();
     }
 
-//    @Bean
-//    public ViewResolver viewResolver() {
-//        InternalResourceViewResolver viewResolver =
-//                new InternalResourceViewResolver();
-//        viewResolver.setPrefix("/WEB-INF/views/");
-//        viewResolver.setSuffix(".jsp");
-//        return viewResolver;
-//    }
+    @Bean
+    public ViewResolver viewResolver() {
+        InternalResourceViewResolver viewResolver =
+                new InternalResourceViewResolver();
+        viewResolver.setPrefix("/WEB-INF/");
+        viewResolver.setSuffix(".jsp");
+        return viewResolver;
+    }
 //    @Override
 //    public void configureDefaultServletHandling(
 //            DefaultServletHandlerConfigurer configurer) {

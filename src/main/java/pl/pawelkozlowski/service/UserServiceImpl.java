@@ -2,11 +2,16 @@ package pl.pawelkozlowski.service;
 
 import lombok.AllArgsConstructor;
 import org.mindrot.jbcrypt.BCrypt;
+import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import pl.pawelkozlowski.entities.User;
 import pl.pawelkozlowski.repository.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
+
 @AllArgsConstructor
+@Service
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
@@ -20,7 +25,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User showUser(Long id) {
-        return userRepository.findById(id);
+        return userRepository.findById(id).orElse(null );
     }
 
     @Override

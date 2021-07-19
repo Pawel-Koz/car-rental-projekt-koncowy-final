@@ -10,13 +10,10 @@ import java.util.Optional;
 
 public interface CarRepository extends JpaRepository<Car, Long> {
 
-    Car save(Car car);
-    List<Car> findAll();
-    void delete(Car car);
-
     List<Car> findAllByModel(String model);
-    Optional<Car>findById(Long id);
     List<Car> findAllByCategory(Category category);
+    List<Car> findAllByMake(String make);
+
 
 
 }

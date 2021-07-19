@@ -4,11 +4,12 @@ import pl.pawelkozlowski.entities.Car;
 import pl.pawelkozlowski.entities.Category;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CarService {
 
     void addCar(Car car);
-    List<Car> showAllCars();
+    List <Car> showAllCars();
     Car showCar(Long id);
     List<Car> showCarsByCategory(Category category);
     List<Car> showCarsByModel(String model);

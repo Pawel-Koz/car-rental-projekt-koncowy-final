@@ -4,10 +4,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -28,11 +31,13 @@ public class User {
     @Size(min = 2)
     private String lastName;
     @NotNull
-    @Size(min = 10)
+    @NotBlank
+    @Size(min = 2)
     private String password;
-    @NotNull
-    private LocalDate dateOfBirth;
-    private String drivingLicenseNumber;
+//    @NotNull
+//    @DateTimeFormat(pattern = "dd-MM-yyyy")
+//    private LocalDate dateOfBirth;
+    private String drivingLicenceNumber;
     @NotNull
     @Email
     private String email;
@@ -47,8 +52,8 @@ public class User {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                ", drivingLicenseNumber='" + drivingLicenseNumber + '\'' +
+//                ", dateOfBirth=" + dateOfBirth +
+                ", drivingLicenseNumber='" + drivingLicenceNumber + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }
