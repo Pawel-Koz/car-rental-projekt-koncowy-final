@@ -9,7 +9,7 @@ public interface CategoryService {
 
     void addCategory(Category category);
     Category showCategory(String name);
-    Category showCategoryBiId(Long id);
+    Category showBiId(Long id);
     List<Category> showAll();
     void update(Category category);
     void deleteByName(Long id);

@@ -3,6 +3,7 @@ package pl.pawelkozlowski.entities;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -37,6 +38,9 @@ public class User {
 //    @NotNull
 //    @DateTimeFormat(pattern = "dd-MM-yyyy")
 //    private LocalDate dateOfBirth;
+    @NotNull
+    @ColumnDefault("0")
+    private short isAdmin;
     private String drivingLicenceNumber;
     @NotNull
     @Email

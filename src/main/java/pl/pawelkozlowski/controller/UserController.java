@@ -54,6 +54,9 @@ public class UserController {
         List<User> users = service.showAllUsers();
         if (email != null && !email.isEmpty() && password != null && !password.isEmpty() && users.size() > 0) {
             for (int i = 0; i < users.size(); i++) {
+                if(users.get(i).getIsAdmin()==1){
+                    return "/admin/adminPanel";
+                }
                 if (users.get(i).getEmail().equals(email) && BCrypt.checkpw(password, users.get(i).getPassword())) {
                     User user = users.get(i);
                     model.addAttribute("user", user);
