@@ -30,9 +30,7 @@ public class UserController {
     public String registerPost(@Valid User user, BindingResult result, @RequestParam String repassword) {
         User  userCheck = service.findByEmail(user.getEmail());
         if (user.getPassword().equals(repassword) && !result.hasErrors() && userCheck==null) {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             userCheck = user;
-//            userCheck.setDateOfBirth(LocalDate.parse(dateOfBirth, formatter));
             service.addUser(userCheck);
             return "user/login";
         } else {
@@ -57,7 +55,10 @@ public class UserController {
                 if (users.get(i).getEmail().equals(email) && BCrypt.checkpw(password, users.get(i).getPassword())) {
                     User user = users.get(i);
                     model.addAttribute("user", user);
-                    return "/cars/carList";
+                    if(users.get(i).getIsAdmin() == 1){
+                        return "/admin/adminPanel";
+                    }
+                    return "/customer/customerPanel";
                 }
             }
         }

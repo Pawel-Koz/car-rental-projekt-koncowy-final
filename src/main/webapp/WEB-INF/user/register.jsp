@@ -19,8 +19,8 @@
             <form:errors path="lastName"/>
             <form:input path="email" type="email" placeholder="Email Address"/>
             <form:errors path="email"/>
-<%--            <form:input path="dateOfBirth" type="date" name="date" min="${localDate}"/>--%>
-<%--            <form:errors path="dateOfBirth"/>--%>
+            <form:input path="dateOfBirth" type="date" name="date" min="${localDate}"/>
+            <form:errors path="dateOfBirth"/>
             <form:input path="drivingLicenceNumber" type="text" placeholder="Drivin licence number"/>
             <form:errors path="drivingLicenceNumber"/>
             <form:input path="password" type="password" placeholder="Password"/>

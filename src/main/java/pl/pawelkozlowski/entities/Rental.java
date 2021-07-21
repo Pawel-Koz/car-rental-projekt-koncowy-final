@@ -22,12 +22,12 @@ public class Rental {
     private long id;
 
     @Column(name = "start_date")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm.s")
-    private LocalDateTime startDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate startDate;
 
     @Column(name = "finish_date")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm.s")
-    private LocalDateTime finishDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate finishDate;
 
     @Column(name = "actual_przebieg")
     private int przebiegStart;
