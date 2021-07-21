@@ -2,13 +2,18 @@ package pl.pawelkozlowski.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.pawelkozlowski.entities.Car;
 import pl.pawelkozlowski.entities.Rental;
+import pl.pawelkozlowski.entities.User;
 import pl.pawelkozlowski.entities.dto.RentalDto;
 import pl.pawelkozlowski.repository.CarRepository;
 import pl.pawelkozlowski.repository.RentalRepository;
 import pl.pawelkozlowski.repository.UserRepository;
 
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
+
 @AllArgsConstructor
 @Service
 public class RentalServiceImpl implements RentalService {
@@ -23,8 +28,16 @@ public class RentalServiceImpl implements RentalService {
         if(rentalDto.getStartDate()!=null && rentalDto.getFinishDate()!=null
                 && rentalDto.getCar()!=null && rentalDto.getUser()!=null){
             rental.setStartDate(rentalDto.getStartDate());
+            rental.setFinishDate(rentalDto.getFinishDate());
+            Optional<User> user = userRepository.findById(rentalDto.getUser());
+            user.ifPresent(rental::setUser);
+            Optional<Car> car = carRepository.findById(rentalDto.getCar());
+            if(car.isPresent()){
+                rental.setCar(car.get());
+            }
+            rentalRepository.save(rental);
         }
-        return null;
+        return rental;
     }
 
     @Override

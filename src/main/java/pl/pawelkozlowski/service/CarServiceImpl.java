@@ -32,9 +32,7 @@ public class CarServiceImpl implements CarService {
             car.setPrzebieg(carDto.getPrzebieg());
             car.setFuelType(carDto.getFuelType());
             Optional<Category> category = categoryRepository.findById(carDto.getCategory());
-            if(category.isPresent()){
-                car.setCategory(category.get());
-            }
+            category.ifPresent(car::setCategory);
             carRepository.save(car);
 
         }

@@ -33,7 +33,7 @@
                 <td>${car.fuelType}</td>
                 <td>${car.przebieg}</td>
                 <td>${car.availability}</td>
-                <td><a href="<c:url   value="/rental/car/add/${car.id}"/>">Rent this car </a>                 
+                <td><a href="<c:url   value="/rental/car/add/${car.id}/${sessionScope.user.id}"/>">Rent this car </a>
             </tr>
         </c:forEach>
     </table>
