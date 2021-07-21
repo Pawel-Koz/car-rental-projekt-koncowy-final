@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Getter
 @Setter
-@ToString
+
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,5 +23,8 @@ public class Category {
     @Size(min = 2)
     private String name;
 
-
+    @Override
+    public String toString() {
+        return name;
+    }
 }

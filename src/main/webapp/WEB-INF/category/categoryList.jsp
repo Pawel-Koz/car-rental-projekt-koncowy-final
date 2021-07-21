@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: pawel
@@ -11,6 +12,22 @@
     <title>Title</title>
 </head>
 <body>
+    <h1>Categories</h1>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+        <c:forEach items="${categories}" var="category">
+            <tr>
+                <td>${category.id}</td>
+                <td>${category.name}</td>
+                <td><a href="<c:url   value="/admin/category/edit/${category.id}"/>">Edytuj</a>
+                    <a href="<c:url   value="/admin/category/delete/${category.id}"/>">Usuń</a></td>
+            </tr>
+        </c:forEach>
+    </table>
 
 </body>
 </html>

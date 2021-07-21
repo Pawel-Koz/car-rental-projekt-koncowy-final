@@ -14,6 +14,9 @@
 <body>
     <h2>Panel admina</h2>
     <p><a href='<c:url value="http://localhost:8080/admin/category/add" />'>Add Category</a></p>
+    <p><a href='<c:url value="http://localhost:8080/admin/category/list" />'>List Categories</a></p>
+    <p><a href='<c:url value="http://localhost:8080/admin/car/add" />'>Add Car</a></p>
+    <p><a href='<c:url value="http://localhost:8080/admin/car/list" />'>List all Cars</a></p>
 
 </body>
 </html>

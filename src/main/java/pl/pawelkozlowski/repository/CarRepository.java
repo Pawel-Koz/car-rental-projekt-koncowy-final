@@ -13,6 +13,7 @@ public interface CarRepository extends JpaRepository<Car, Long> {
     List<Car> findAllByModel(String model);
     List<Car> findAllByCategory(Category category);
     List<Car> findAllByMake(String make);
+    Optional<Car> findByVin(String vin);
 
 
 

@@ -2,15 +2,16 @@ package pl.pawelkozlowski.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import pl.pawelkozlowski.entities.Car;
 import pl.pawelkozlowski.entities.Category;
+import pl.pawelkozlowski.entities.dto.CarDto;
 import pl.pawelkozlowski.service.CategoryService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @AllArgsConstructor
@@ -34,6 +35,28 @@ public class CategoryController {
                 result.rejectValue("name", "error.category", "Kategoria juz istnieje");
                 return "category/categoryAdd";
             }
+            return "category/categoryAdd";
+        }
+    }
+
+    @GetMapping("/list")
+    public String showList(Model model){
+        model.addAttribute("categories", service.showAll());
+        return "/category/categoryList";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editCar(Model model, @PathVariable long id) {
+        Category category = service.showBiId(id);
+        model.addAttribute("category", category);
+        return "category/categoryAdd";
+    }
+    @PostMapping("edit/{id}")
+    public String updateCar(@Valid Category category, BindingResult result){
+        if(!result.hasErrors()){
+            service.update(category);
+            return "/admin/adminPanel";
+        } else{
             return "category/categoryAdd";
         }
     }
