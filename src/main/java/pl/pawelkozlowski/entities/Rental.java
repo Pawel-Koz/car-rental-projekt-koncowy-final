@@ -35,13 +35,13 @@ public class Rental {
     @Column(name = "price")
     private float price;
 
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+    @ManyToOne(
                 fetch = FetchType.LAZY)
     @JoinColumn(name = "car_id")
     private Car car;
 
 
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+    @ManyToOne(
             fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
