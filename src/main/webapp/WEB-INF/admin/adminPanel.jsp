@@ -9,10 +9,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Admin Panel</title>
 </head>
 <body>
-    <h2>Panel admina</h2>
+    <h2>Witaj adminie </h2>
+    <p>${sessionScope.user.firstName}</p>
     <p><a href='<c:url value="http://localhost:8080/admin/category/add" />'>Add Category</a></p>
     <p><a href='<c:url value="http://localhost:8080/admin/category/list" />'>List Categories</a></p>
     <p><a href='<c:url value="http://localhost:8080/admin/car/add" />'>Add Car</a></p>

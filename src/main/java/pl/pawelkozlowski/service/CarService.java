@@ -14,10 +14,10 @@ public interface CarService {
     List <Car> showAllCars();
     Car showCar(Long id);
     Car showByVin(String vin);
+    Car updateCar(CarDto carDto);
+    void deleteById(Long id);
     List<Car> showCarsByCategory(Category category);
     List<Car> showCarsByModel(String model);
     List<Car> showCarsByMake(String make);
     void update(Car car);
-    Car updateCar(CarDto carDto);
-    void deleteById(Long id);
 }

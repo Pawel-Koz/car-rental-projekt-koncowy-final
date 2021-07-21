@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Add Car</title>
 </head>
 <body>
 <form:form method="post" modelAttribute="carDto">

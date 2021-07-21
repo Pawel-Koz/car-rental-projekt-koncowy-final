@@ -60,4 +60,9 @@ public class CategoryController {
             return "category/categoryAdd";
         }
     }
+    @GetMapping("delete/{id}")
+    public String removeCategory(@PathVariable long id){
+        service.deleteById(id);
+        return "redirect:/admin/category/list";
+    }
 }

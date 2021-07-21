@@ -12,7 +12,7 @@ public interface CategoryService {
     Category showBiId(Long id);
     List<Category> showAll();
     void update(Category category);
-    void deleteByName(Long id);
+    void deleteById(Long id);
 
 
 

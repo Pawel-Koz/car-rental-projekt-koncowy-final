@@ -2,16 +2,18 @@
 <%--
   Created by IntelliJ IDEA.
   User: pawel
-  Date: 19.07.2021
-  Time: 09:01
+  Date: 21.07.2021
+  Time: 09:41
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Admin Car List</title>
+    <title>Customer Car List</title>
+
 </head>
 <body>
+<p>${sessionScope.user.firstName}</p>
     <h1>List cars</h1>
     <table>
         <tr>
@@ -31,10 +33,10 @@
                 <td>${car.fuelType}</td>
                 <td>${car.przebieg}</td>
                 <td>${car.availability}</td>
-                <td><a href="<c:url   value="/admin/car/edit/${car.id}"/>">Edytuj</a>
-                    <a href="<c:url   value="/admin/car/delete/${car.id}"/>">Usuń</a></td>
+                <td><a href="<c:url   value="/rental/car/add/${car.id}"/>">Rent this car </a>                 
             </tr>
         </c:forEach>
     </table>
+
 </body>
 </html>

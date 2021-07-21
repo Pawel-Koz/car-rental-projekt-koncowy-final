@@ -35,9 +35,9 @@ public class User {
     @NotBlank
     @Size(min = 2)
     private String password;
-//    @NotNull
-//    @DateTimeFormat(pattern = "dd-MM-yyyy")
-//    private LocalDate dateOfBirth;
+    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dateOfBirth;
     @NotNull
     @ColumnDefault("0")
     private short isAdmin;
@@ -56,7 +56,7 @@ public class User {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-//                ", dateOfBirth=" + dateOfBirth +
+                ", dateOfBirth=" + dateOfBirth +
                 ", drivingLicenseNumber='" + drivingLicenceNumber + '\'' +
                 ", email='" + email + '\'' +
                 '}';

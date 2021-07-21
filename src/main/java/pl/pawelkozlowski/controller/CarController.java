@@ -21,19 +21,19 @@ import java.util.List;
 @Controller
 
 @AllArgsConstructor
-@RequestMapping(value = "/admin/car")
+//@RequestMapping(value = "/")
 public class CarController {
     private final CarService service;
     private final CategoryService categoryService;
 
-    @GetMapping("/add")
+    @GetMapping("/admin/car/add")
     public String addCar(Model model){
         List<Category> categories = categoryService.showAll();
         model.addAttribute("categories",categories);
         model.addAttribute("carDto",new CarDto());
         return "/cars/carAdd";
     }
-    @PostMapping("/add")
+    @PostMapping("/admin/car/add")
     public String add(@Valid CarDto carDto, BindingResult result){
         Car carToCheck = service.showByVin(carDto.getVin());
         if(!result.hasErrors() && carToCheck==null){
@@ -48,13 +48,18 @@ public class CarController {
 
         }
     }
-    @GetMapping("/list")
+    @GetMapping("/admin/car/list")
     public String showList(Model model){
         model.addAttribute("cars", service.showAllCars());
         return "/cars/carList";
     }
+    @GetMapping("/customer/car/list")
+    public String showListForUser(Model model){
+        model.addAttribute("cars", service.showAllCars());
+        return "/cars/userCarList";
+    }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("/admin/car/edit/{id}")
     public String editCar(Model model, @PathVariable long id) {
         Car car = service.showCar(id);
         List<Category> categories = categoryService.showAll();
@@ -63,7 +68,8 @@ public class CarController {
         model.addAttribute("categories", categories);
         return "cars/carAdd";
     }
-    @PostMapping("edit/{id}")
+
+    @PostMapping("/admin/car/edit/{id}")
     public String updateCar(@Valid CarDto carDto, BindingResult result){
         if(!result.hasErrors()){
             service.updateCar(carDto);
@@ -73,7 +79,7 @@ public class CarController {
         }
     }
 
-    @GetMapping("delete/{id}")
+    @GetMapping("/admin/car/delete/{id}")
     public String removeCar(Model model, @PathVariable long id) {
         service.deleteById(id);
         return "redirect:/admin/car/list";
