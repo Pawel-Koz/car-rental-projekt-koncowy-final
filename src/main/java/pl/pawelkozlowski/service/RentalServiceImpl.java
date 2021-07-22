@@ -47,7 +47,7 @@ public class RentalServiceImpl implements RentalService {
 
     @Override
     public Rental showRental(Long id) {
-        return null;
+        return rentalRepository.findOne(id);
     }
 
     @Override
@@ -57,6 +57,20 @@ public class RentalServiceImpl implements RentalService {
 
     @Override
     public Rental updateRental(RentalDto rentalDto) {
-        return null;
+        Rental rental = rentalRepository.findOne(rentalDto.getId());
+        if(rentalDto.getStartDate()!=null && rentalDto.getFinishDate()!=null
+                && rentalDto.getCar()!=null && rentalDto.getUser()!=null){
+            rental.setStartDate(rentalDto.getStartDate());
+            rental.setFinishDate(rentalDto.getFinishDate());
+            Optional<User> user = userRepository.findById(rentalDto.getUser());
+            user.ifPresent(rental::setUser);
+            Optional<Car> car = carRepository.findById(rentalDto.getCar());
+            if(car.isPresent()){
+                rental.setCar(car.get());
+            }
+            rentalRepository.save(rental);
+        }
+        return rental;
     }
+
 }
