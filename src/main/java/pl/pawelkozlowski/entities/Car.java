@@ -14,7 +14,6 @@ import java.time.LocalDate;
 @Entity
 @Getter
 @Setter
-@ToString
 public class Car  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,10 +32,12 @@ public class Car  {
     private String fuelType;
 
     private long przebieg;
-//    private LocalDate firstRegistration;
+
     @ColumnDefault("1")
     private short availability;
 
-
-
+    @Override
+    public String toString() {
+        return "id=" + id + ", " + model;
+    }
 }

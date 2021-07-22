@@ -63,7 +63,6 @@ public class CarController {
     public String editCar(Model model, @PathVariable long id) {
         Car car = service.showCar(id);
         List<Category> categories = categoryService.showAll();
-        System.out.println(car);
         model.addAttribute("carDto", car);
         model.addAttribute("categories", categories);
         return "cars/carAdd";

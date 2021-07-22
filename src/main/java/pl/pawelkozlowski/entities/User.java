@@ -45,21 +45,14 @@ public class User {
     @NotNull
     @Email
     private String email;
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_name"))
     private Set<Role> roles = new HashSet<>();
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                ", drivingLicenseNumber='" + drivingLicenceNumber + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return firstName + ", " + lastName ;
     }
 }
 
