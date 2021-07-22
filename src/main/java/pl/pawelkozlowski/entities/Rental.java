@@ -29,20 +29,15 @@ public class Rental {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate finishDate;
 
-    @Column(name = "actual_przebieg")
-    private int przebiegStart;
+//    @Column(name = "actual_przebieg")
+//    private int przebiegStart;
 
-    @Column(name = "price")
-    private float price;
-
-    @ManyToOne(
-                fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "car_id")
     private Car car;
 
 
-    @ManyToOne(
-            fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "user_id")
     private User user;
 

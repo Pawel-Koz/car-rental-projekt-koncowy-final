@@ -42,7 +42,7 @@ public class RentalServiceImpl implements RentalService {
 
     @Override
     public List<Rental> showAllRentals() {
-        return null;
+        return rentalRepository.findAll();
     }
 
     @Override

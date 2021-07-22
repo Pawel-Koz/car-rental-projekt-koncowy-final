@@ -22,12 +22,12 @@ import java.io.Serializable;
 @Controller
 @SessionAttributes("user")
 @AllArgsConstructor
-@RequestMapping(value = "/rental/car")
+@RequestMapping(value = "/")
 public class RentalController {
     private final RentalService rentalService;
 
 
-    @GetMapping("/add/{id}/{id1}")
+    @GetMapping("/rental/car/add/{id}/{id1}")
     public String addRental(Model model, @PathVariable long id, @PathVariable long id1){
         RentalDto rentalDto = new RentalDto();
         rentalDto.setCar(id);
@@ -36,13 +36,18 @@ public class RentalController {
         return "rental/rentalAdd";
     }
 
-    @PostMapping("/add/{id}/{id1}")
+    @PostMapping("/rental/car/add/{id}/{id1}")
     public String addRentalPost(@Valid RentalDto rentalDto, BindingResult result){
         if(!result.hasErrors()){
             rentalService.addRental(rentalDto);
             return "customer/customerPanel";
         }
         return "cars/userCarList";
+    }
+    @GetMapping("/admin/rental/list")
+    public String showList(Model model){
+        model.addAttribute("rentals", rentalService.showAllRentals());
+        return "/rental/rentalList";
     }
 
 }

@@ -12,12 +12,12 @@
     <title>Admin Panel</title>
 </head>
 <body>
-    <h2>Witaj adminie </h2>
-    <p>${sessionScope.user.firstName}</p>
+    <h2>Witaj: ${sessionScope.user.firstName}</h2>
     <p><a href='<c:url value="http://localhost:8080/admin/category/add" />'>Add Category</a></p>
     <p><a href='<c:url value="http://localhost:8080/admin/category/list" />'>List Categories</a></p>
     <p><a href='<c:url value="http://localhost:8080/admin/car/add" />'>Add Car</a></p>
     <p><a href='<c:url value="http://localhost:8080/admin/car/list" />'>List all Cars</a></p>
+    <p><a href='<c:url value="http://localhost:8080/admin/rental/list  " />'>List all Rentals</a></p>
 
 </body>
 </html>
