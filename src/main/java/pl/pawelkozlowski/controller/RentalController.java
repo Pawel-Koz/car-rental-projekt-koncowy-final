@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.pawelkozlowski.entities.Car;
+import pl.pawelkozlowski.entities.Category;
 import pl.pawelkozlowski.entities.Rental;
 import pl.pawelkozlowski.entities.dto.CarDto;
 import pl.pawelkozlowski.entities.dto.RentalDto;
@@ -18,6 +19,7 @@ import javax.naming.Binding;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.Serializable;
+import java.util.List;
 
 @Controller
 @SessionAttributes("user")
@@ -48,6 +50,23 @@ public class RentalController {
     public String showList(Model model){
         model.addAttribute("rentals", rentalService.showAllRentals());
         return "/rental/rentalList";
+    }
+
+    @GetMapping("/admin/rental/edit/{id}")
+    public String editRental(Model model, @PathVariable long id) {
+        Rental rental = rentalService.showRental(id);
+        model.addAttribute("rentalDto", rental);
+        return "rental/rentalAdd";
+    }
+
+    @PostMapping("/admin/rental/edit/{id}")
+    public String updateRental(@Valid RentalDto rentalDto, BindingResult result){
+        if(!result.hasErrors()){
+            rentalService.updateRental(rentalDto);
+            return "/admin/adminPanel";
+        } else{
+            return "rental/rentalAdd";
+        }
     }
 
 }
