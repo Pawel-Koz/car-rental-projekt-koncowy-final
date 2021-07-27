@@ -68,5 +68,10 @@ public class RentalController {
             return "rental/rentalAdd";
         }
     }
+    @GetMapping("/admin/rental/delete/{id}")
+    public String removeCar(@PathVariable long id) {
+        rentalService.deleteRental(id);
+        return "redirect:/admin/rental/list";
+    }
 
 }

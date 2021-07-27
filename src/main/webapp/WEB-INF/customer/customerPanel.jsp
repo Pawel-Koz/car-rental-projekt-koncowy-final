@@ -15,6 +15,8 @@
 <h2>Witaj drogi kliencie!!!<p>${sessionScope.user.firstName}</p> </h2>
 
 <p><a href='<c:url value="http://localhost:8080/customer/car/list" />'>List all Cars</a></p>
+<p><a href='<c:url value="http://localhost:8080/" />'>Home</a></p>
+
 
 </body>
 </html>

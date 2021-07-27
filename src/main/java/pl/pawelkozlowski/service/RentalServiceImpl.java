@@ -73,4 +73,9 @@ public class RentalServiceImpl implements RentalService {
         return rental;
     }
 
+    @Override
+    public void deleteRental(Long id) {
+        rentalRepository.delete(id);
+    }
+
 }

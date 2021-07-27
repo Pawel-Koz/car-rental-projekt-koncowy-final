@@ -79,7 +79,7 @@ public class CarController {
     }
 
     @GetMapping("/admin/car/delete/{id}")
-    public String removeCar(Model model, @PathVariable long id) {
+    public String removeCar(@PathVariable long id) {
         service.deleteById(id);
         return "redirect:/admin/car/list";
     }
